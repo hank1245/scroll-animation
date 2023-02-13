@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      background: black;
+      height: 3500px;
+    }
+    div {
+      margin-top: 800px;
+      color: white;
+      text-align: center;
+      font-size: 2rem;
+    }
+    .hidden {
+      opacity: 0;
+      transition: all 1s;
+      filter: blur(5px);
+      transform: translateX(-200px);
+    }
+    .show {
+      opacity: 1;
+      filter: blur(0px);
+      transform: translateX(0);
+    }
+  </style>
+  <body>
+    <div class="hidden">
+      세상을 위한 적정온도로 기후 위기 문제를 해결합니다 .
+    </div>
+    <div class="hidden">모두가 공감하고 있지만 해결하기 어려웠던 문제 ,</div>
+    <div class="hidden">씨드앤과 함께 일상이 변합니다 .</div>
+    <div class="hidden">
+      씨드앤의 데이터 기반 체계적 온도 관리 에너지 운영관리의 혁신을 가져옵니다.
+    </div>
+    <script>
+      const div = document.querySelectorAll("div");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+              //   observer.unobserve(entry.target);
+            } else {
+              entry.target.classList.remove("show");
+            }
+          });
+        },
+        {
+          threshold: 1,
+          rootMargin: "10px",
+        }
+      );
+      div.forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

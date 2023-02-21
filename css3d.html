@@ -7,8 +7,13 @@
     <title>Document</title>
   </head>
   <style>
-    body {
-      background: black;
+    html {
+      font-size: 3rem;
+    }
+    @keyframes spin {
+      to {
+        transform: rotateY(360deg);
+      }
     }
     .stage {
       display: flex;
@@ -16,66 +21,59 @@
       align-items: center;
       width: 100vw;
       height: 100vh;
-      perspective: 400px;
+      background: powderblue;
+      perspective: 600px;
     }
-    .login {
+    .carousel {
       position: relative;
-      width: 300px;
-      height: 150px;
-      font-size: 2rem;
-      color: white;
+      width: 200px;
+      height: 200px;
       transform-style: preserve-3d;
-      transform-origin: middle;
-      transition: 3s;
-    }
-    .flipped {
-      background: black;
-    }
-    .flipped .login {
-      transform: rotateY(180deg);
-    }
-    .panel,
-    .login-side {
-      position: absolute;
-      left: 0;
-      right: 0;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
+      animation: spin 10s infinite linear;
     }
     .panel {
-      background: rgba(255, 255, 255, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 200px;
+      height: 200px;
+      background-color: rgba(255, 255, 255, 0.5);
+      position: absolute;
+      left: 0;
+      top: 0;
+      border: 1px solid black;
+      /* backface-visibility: hidden; */
     }
-    .front {
-      transform: translateZ(50px);
+    .panel:nth-child(1) {
+      transform: rotateY(0deg) translateZ(173px);
     }
-    .back {
-      background: blue;
-      transform: rotateY(180deg);
+    .panel:nth-child(2) {
+      transform: rotateY(60deg) translateZ(173px);
     }
-    .hi {
-      margin-left: 80px;
+    .panel:nth-child(3) {
+      transform: rotateY(120deg) translateZ(173px);
+    }
+    .panel:nth-child(4) {
+      transform: rotateY(180deg) translateZ(173px);
+    }
+    .panel:nth-child(5) {
+      transform: rotateY(240deg) translateZ(173px);
+    }
+    .panel:nth-child(6) {
+      transform: rotateY(300deg) translateZ(173px);
     }
   </style>
   <body>
     <div class="stage">
-      <div class="login">
-        <div class="login-side front">
-          <label>
-            <span class="hi">안녕하세요</span>
-          </label>
-        </div>
-        <div class="panel"></div>
-        <div class="login-side back">
-          <p>로그인하세요!</p>
-        </div>
+      <div class="carousel">
+        <div class="panel">1</div>
+        <div class="panel">2</div>
+        <div class="panel">3</div>
+        <div class="panel">4</div>
+        <div class="panel">5</div>
+        <div class="panel">6</div>
       </div>
     </div>
-    <script>
-      let login = document.querySelector(".login");
-      login.addEventListener("click", () =>
-        document.body.classList.toggle("flipped")
-      );
-    </script>
+    <script></script>
   </body>
 </html>
